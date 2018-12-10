@@ -1,0 +1,20 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r}
+library(reticulate)
+use_condaenv(condaenv = "python3")
+```
+
+```{r}
+iris_data <- iris
+```
+
+```{python}
+print(r.iris_data.shape)
+```
+
