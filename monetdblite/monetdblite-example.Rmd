@@ -6,11 +6,12 @@ output: html_notebook
 Create a data base (in a new directory) or connect to an already existent one:
 
 ```{r}
+library(MonetDBLite)
 library(dplyr)
 library(dbplyr)
 library(DBI)
 library(stringr)
-library(MonetDBLite) # IMPORTANT: always load MonetDBLite after dplyr and dbplyr
+
 dbdir <- "database"
 con <- dbConnect(MonetDBLite::MonetDBLite(), dbdir)
 ```
