@@ -1,4 +1,4 @@
-# r-scikit-learn
+# Using Scikit-Learn from R
 
 <br>
 
