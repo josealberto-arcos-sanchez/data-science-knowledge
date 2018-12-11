@@ -1,0 +1,135 @@
+---
+title: "MonetDBLite example"
+output: html_notebook
+---
+
+Create a data base (in a new directory) or connect to an already existent one:
+
+```{r}
+library(dplyr)
+library(dbplyr)
+library(DBI)
+library(stringr)
+library(MonetDBLite) # IMPORTANT: always load MonetDBLite after dplyr and dbplyr
+dbdir <- "database"
+con <- dbConnect(MonetDBLite::MonetDBLite(), dbdir)
+```
+
+Now, write a table to the data base from a CSV file. This is different from the official documentation, but works better, because it allow the very useful "best.effort" parameter. It allows some errors, so that the process does not fail is some rows are wrongly formatted.
+
+```{r}
+n_lines <- monet.read.csv(conn = con, files = "data/UserAnimeList.csv", 
+                          tablename = "user_anime_list", header = TRUE, 
+                          best.effort = TRUE)
+```
+
+And now we can perform queries!!
+Let's read the top 10 rows:
+
+```{r}
+dbGetQuery(con, "select * from user_anime_list limit 10")
+```
+
+Super fast, super easy.
+
+Let's get the top 10 anime series by mean score and measure execution time:
+
+```{r}
+start_time <- Sys.time()
+
+query <- str_glue("
+                  select *
+                  from (
+                    select anime_id, avg(my_score) as mean_score
+                    from user_anime_list
+                    group by anime_id
+                  ) as mean_scores
+                  order by mean_score desc
+                  limit 10
+                  ")
+
+dbGetQuery(con, query)
+
+end_time <- Sys.time()
+str_glue("Execution time: ",
+         "{round(difftime(end_time, start_time, units = 'secs'), 2)} seconds")
+```
+
+Less than 2 seconds (5GB of data). Pretty nice!
+
+Let's do the same with the dplyr interface:
+
+```{r}
+user_anime_list <- tbl(con, "user_anime_list")
+
+start_time <- Sys.time()
+
+user_anime_list %>% 
+  select(anime_id, my_score) %>% 
+  group_by(anime_id) %>% 
+  summarise(mean_score = mean(my_score)) %>% 
+  ungroup() %>% 
+  arrange(desc(mean_score)) %>% 
+  head(n = 10)
+
+end_time <- Sys.time()
+str_glue("Execution time: ",
+         "{round(difftime(end_time, start_time, units = 'secs'), 2)} seconds")
+```
+
+Same result, and even faster than the SQL query!!
+Let's see the query dbplyr is performing:
+
+```{r}
+# Here we are not performing the query. Just defining it. To perform the query,
+# we need to do something with the query variable (printing it, using it,...).
+# dbplyr is lazy!
+result <- user_anime_list %>% 
+  select(anime_id, my_score) %>% 
+  group_by(anime_id) %>% 
+  summarise(mean_score = mean(my_score)) %>% 
+  ungroup() %>% 
+  arrange(desc(mean_score)) %>% 
+  head(n = 10)
+
+show_query(result)
+```
+
+The query is similar, but faster than  mine. Pretty cool!
+
+Where is the limit? Can I use any function?
+
+```{r}
+result <- user_anime_list %>% 
+  select(anime_id, my_score) %>% 
+  group_by(anime_id) %>% 
+  summarise(mean_score = median(my_score)) %>% 
+  ungroup() %>% 
+  arrange(desc(mean_score)) %>% 
+  head(n = 10)
+
+show_query(result)
+```
+
+```{r}
+result <- user_anime_list %>% 
+  select(anime_id, my_score) %>% 
+  group_by(anime_id) %>% 
+  summarise(mean_score = median(my_score)) %>% 
+  ungroup() %>% 
+  arrange(desc(mean_score)) %>% 
+  mutate(kk = mean_score + sqrt(anime_id)) %>% 
+  head(n = 10)
+
+show_query(result)
+```
+
+Cool!
+
+
+Let's disconnect:
+
+```{r}
+dbDisconnect(con, shutdown=TRUE)
+```
+
