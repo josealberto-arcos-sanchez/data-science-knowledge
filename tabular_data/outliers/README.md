@@ -24,5 +24,7 @@ A different approach to true outliers could be to try creating a transformation 
 
 Just how much an outlier affects your analysis depends, not surprisingly, on a few factors. One factor is dataset size. In a large dataset, each individual point carries less weight, so an outlier is less worrisome than the same data point would be in a smaller dataset. Another consideration is “how much” of an outlier a point might be – just how far out of line with the rest of your dataset a single point is. A point that is ten times as large as your upper boundary will do more damage than a point that is twice as large.
 
+---
+
 ## Sources
 [Handling outliers](https://www.rapidinsightinc.com/handle-outliers/)
