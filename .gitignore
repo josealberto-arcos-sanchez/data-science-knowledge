@@ -2,5 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
-monetdblite/data/*
-monetdblite/database/*
+tools/data_bigger_than_ram/monetdblite/data/*
+tools/data_bigger_than_ram/monetdblite/database/*
