@@ -1,4 +1,4 @@
-# Typical Data Science Pipeline with Tabular Data
+# Tabular Data
 
 ## Contents
 1. [Checklist](checklist/)
