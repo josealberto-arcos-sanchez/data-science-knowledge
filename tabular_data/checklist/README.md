@@ -1,7 +1,5 @@
 # Checklist for Data Science Projects with Tabular Data
 
----
-
 ### Before Starting the Project (before touching the data)
 
 <br>
