@@ -55,7 +55,7 @@
 
 ### Checking the Data
 - Did you plot univariate and multivariate summaries of the data?
-- Did you check for outliers?
+- Did you check for [outliers](../outliers/)?
 - Did you identify the missing data code?
 
 ---
