@@ -6,7 +6,7 @@ There has been a passionate discussion in the past few years about which is the 
 ## Using R and Python together
 
 ### R notebooks
-The easiest way to use R and Python together is through RStudio Notebooks, where it is possible to use R and Python code together, sharing data between them. A minimal notebook example can be found [here](r_and_python.Rmd) (and the result of its execution can be found [here]().
+The easiest way to use R and Python together is through RStudio Notebooks, where it is possible to use R and Python code together, sharing data between them. A minimal notebook example can be found [here](R_notebooks/r_and_python.Rmd) (and the result of its execution can be found [here](https://htmlpreview.github.io/?https://raw.githubusercontent.com/josealberto-arcos-sanchez/data-science-knowledge/master/tools/r_and_python/R_notebooks/r_and_python.html)).
 
 The problem with this approach is that it is only available when using R notebooks in the last version of RStudio.
 
