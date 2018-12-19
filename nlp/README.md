@@ -21,7 +21,7 @@ The typical text processing pipeline converts a dirty natural language text into
 - **Stemming and Lemmatization**: useful to further normalize our tokens, so that different variations and modifications of words with similar meaning are considered the same. Usually, lemmatization is done before stemming, as it is more "intelligent" and its results can be used as input for the stemming process.
 
 **Implementation**  
-A Python implementation of this complete (basic) process can be found in [this notebook](https://github.com/josealberto-arcos-sanchez/data-science-knowledge/blob/master/NLP/text_processing.ipynb).
+A Python implementation of this complete (basic) process can be found in [this notebook](text_processing.ipynb).
 
 ---
 
