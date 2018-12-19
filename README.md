@@ -2,7 +2,7 @@
 
 ## Contents
 - [General Data Science knowledge](general_knowledge/)
-- [Typical Data Science Pipeline with Tabular Data](tabular_data_pipeline/)
+- [Tabular Data](tabular_data/)
 - [Natural Language Processing](nlp/)
 - [Tools](tools/)
 - [Crazy Ideas](crazy_ideas/)
