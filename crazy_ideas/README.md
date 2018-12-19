@@ -1,3 +1,5 @@
+# Crazy Ideas
+
 ## Index
 1. [Intelligent chatbot using HMMs](#intelligent-chatbot-using-hmms)
 1. [Extreme Incremental Modeling (ArcosSan method)](#extreme-incremental-modeling-arcossan-method)
