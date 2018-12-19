@@ -1,3 +1,16 @@
 # Data Science Knowledge
 
-The target of this repo is to compile all my knowledge about data science and evolve it over time. Click [here](https://github.com/josealberto-arcos-sanchez/data-science-knowledge/wiki)!
+## Contents
+- [General Data Science knowledge](general_knowledge/)
+- [Typical Data Science Pipeline with Tabular Data](tabular_data_pipeline/)
+- [Natural Language Processing](nlp/)
+- [Tools](tools/)
+- [Crazy Ideas](crazy_ideas/)
+
+---
+
+## Rules of the repo
+
+1. The content of this repo should be **non-perishable** knowledge, and therefore technology-independent. Technologies change over time, but some concepts and ideas are always the same. However, links to implementations of the concepts (once explained in this Wiki) will be accepted. And the "Tools" folder will contain all the relevant info concerning tools.
+1. Every bit of content should be backed by experience. An example where the bit of knowledge appears will be helpful to understand why that bit is there.
+
